@@ -1,0 +1,179 @@
+
+.ImageContainer
+{
+    background-size:cover;
+}
+*{
+    box-sizing: border-box;
+}
+.d-block{
+    height: 600px;
+}
+
+.bg-image
+{
+   width: 100%;
+   height: 600px;
+   background-image: url('./../../../assets/Room2.jpg');
+   background-size: cover;
+   
+}
+
+.black
+{
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    height:600px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 5px;
+    grid-row-gap:5px;
+}
+
+.black2
+{
+    width: 640px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    height:340px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item
+{
+  height:340px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.roomTab
+{
+    background-image: url('../../../assets/pgRooms.jpg');
+    background-size: cover;
+}
+
+.foodTab
+{
+    background-image: url('../../../assets/cook.jpg');
+    background-size: cover;
+}
+.laundryTab
+{
+    background-image: url('../../../assets/Laundry.jpg');
+    background-size: cover;
+}
+.vehicleTab
+{
+    background-image: url('../../../assets/bikeRental.gif');
+    background-size: cover;
+}
+
+
+
+.container-fluid .Services2
+{
+    display: flex;
+    color:black;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-fluid .Services2 div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.counter
+{
+    font-size: 70px;
+}
+
+
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+ 
+  
+  .container img{
+      cursor: pointer;
+  }
+
+  .counters p:nth-child(1)
+  {
+    color: #E15D36;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
+            Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-size: 80px;
+     text-align: center;
+  }
+
+  .counters p:nth-child(2)
+  {
+    color: #cc6647;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-size: 30px;
+     margin-top: 30px;
+     text-align: center;
+  }
+  
+  .container2{
+    text-align: center;  
+   
+  }
+
+  .Services img{
+    width: 300px;
+    height: 100%;
+  }
+
+
+
+@media (max-width:650px)
+{
+
+    .black{
+        font-size: 20px;
+    }
+
+    .container .Services
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-fluid .Services2
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+}

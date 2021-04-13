@@ -1,0 +1,29 @@
+
+
+.card
+{
+    background-size: cover;
+    background-color: whitesmoke;
+    z-index: 1;
+    width: 25%;
+    height: 300px;
+    
+    
+}
+
+.container-fluid
+{
+    color:black;
+
+}
+
+.row
+{
+    height: 400px;
+}
+
+button
+{
+    position: absolute;
+    bottom: 10px;
+}

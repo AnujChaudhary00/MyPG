@@ -1,0 +1,20 @@
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#user li a
+{
+   font-size: 15px;
+    border: 2px solid black;
+    border-radius: 25px;
+    color: black;
+    margin-left: 5px;
+}
+
+#user li a:hover{
+    transition: .5s;
+    background-color: black;
+    color:white;
+}

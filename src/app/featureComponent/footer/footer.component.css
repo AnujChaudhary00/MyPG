@@ -1,0 +1,13 @@
+a{
+    font-size: 12px;
+}
+li{
+    margin-top: 10px;
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+}
+
