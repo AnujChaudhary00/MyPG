@@ -3,8 +3,7 @@ img
     margin: 20px auto auto auto;
     width: 180px;
     height: 180px;
-    border:2px solid grey ;
-    border-radius: 100%;
+    border-radius: 0%;
 }
 
 input{

@@ -1,1 +1,61 @@
-<p>room-detail works!</p>
+<div class="row">
+    <div class="row">
+        <div id="carouselExampleControls" class="col-md-6 carousel slide" data-ride="carousel">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <img  class="carousel-control-prev-icon" src="https://img.icons8.com/ios-filled/30/000000/less-than.png"/>
+              </a>
+            <div class=" col-md-6 carousel-inner">
+                <div *ngFor="let image of images" class="carousel-item active">
+                  <img [src]="image" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-next" href="#" role="button" data-slide="next">
+              <img class="carousel-control-next-icon" src="https://img.icons8.com/ios-glyphs/30/000000/more-than.png"/>
+            </a>
+          </div>
+    </div>
+    <div class="row p-5 bg-light">
+        <div class="row">
+            <h1 class="display-5">{{pg.pgname}}</h1>
+            <p class="text-muted h4">{{pg.city}}, {{pg.pincode}},{{pg.state}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+              <hr>
+              <p class=" text-secondary h3 font-weight-bold">About</p>
+                <p class="text-dark text-weight-bold">{{pg.pgname}} is a {{pg.type}} type building, owned by {{pg.ownername}}.<br></p>
+            <p class="text-secondary"><b>No. of beds: </b>{{pg.bed}}</p>
+            <p class="text-secondary"><b>Total available Rooms is:</b>{{pg.totalroom}}</p>
+            <p class="text-secondary"><b>Contact no. of Owner:</b>{{pg.contactno}}</p>
+            <p class="text-secondary"><b>Email of Owner:</b>{{pg.email}}</p>
+            <hr>
+            <div class="row aminities">
+              <p class="text-secondary pt-5 h3">Aminities</p>
+              <div class="col-md-3">
+                <img src="https://img.icons8.com/fluent/24/000000/lightning-bolt.png"/>
+                <p class="text-muted">24*7 Power backup</p>
+              </div>
+              <div class="col-md-3">
+                <img src="https://img.icons8.com/fluent/24/000000/water-cooler.png"/>
+                <p class="text-muted">24*7 Water Supply</p>
+              </div>
+              <div class="col-md-3">
+                <img src="https://img.icons8.com/color/24/000000/engineer.png"/>
+                <p class="text-muted">On demand Maintanance</p>
+              </div>
+            </div>
+            <hr>
+            </div>
+            <div class="col-md-4 text-white">
+              <div class="col-md-12 bg-dark p-3">
+                <h1 class="display-5">Lease Amount:</h1>
+                <span class=" h3 text-success">Rs. {{pg.rent}}</span>&nbsp;&nbsp;<span class="text-muted"><del>{{pg.rent+2000}}</del></span>
+                <br>
+                <br><br>
+                <button class="btn btn-success item-align-center">proceed to Book</button>
+              </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

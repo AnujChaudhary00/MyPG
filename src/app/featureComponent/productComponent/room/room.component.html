@@ -1,5 +1,5 @@
 <div class="body">
-  
+  <router-outlet></router-outlet>
     <div class="container-fluid searchBox">
         <div class="black"></div>
         <div class="input-group rounded">
@@ -57,22 +57,21 @@
        </div>
     <div class="container m-5">
         <div class="container">
-          <div class="row">
+          <div class="row" *ngFor="let list of pgList">
             <div class="col-4">
-              <img class="card-img" src="../../../../assets/Room2.jpg">
+              <img class="card-img" [src]="list.photos[0]">
             </div>
             <div class="col-6">
               <div class="row">
                 <div class="col-8 details">
-                  <p><strong>Name</strong></p>
-                  <p><strong>Monthly Rent:</strong> Rs.Price </p>
-                  <p><strong>Distance From Lpu: </strong>Distance Km</p>
-                  <p><strong>Rating: </strong>Ratin</p>
-                  <p><strong>Address:</strong>Address</p>
+                  <p><strong>{{list.pgname}}</strong></p>
+                  <p><strong>Address:</strong>{{list.city}},{{list.pincode}},{{list.state}} </p>
+                  <p><strong>Rent </strong> {{list.rent}}</p>
+                  <p><strong>Type</strong>{{list.type}}</p>
+                  <p><strong>Room Available:</strong>{{list.totalroom}}</p>
                 </div>
                 <div class="col-2">
-                  <button class="btn btn-warning">Check Details</button>
-                  <button class="btn btn-success">Book</button>
+                  <button class="btn btn-warning" (click)="CheckIn(list._id)">Check In</button>
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@ export class MyProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private userServe:UserServiceService) { }
   saveProfile:FormGroup;
-
+  url
   ngOnInit(): void {
     this.userServe.getUserProfile(localStorage.getItem('id')).subscribe(res=>{
   
@@ -30,6 +30,9 @@ export class MyProfileComponent implements OnInit {
           role:[res.results.role]
         }
       );
+
+      this.url=res.results.profilepic;
+      console.log(this.url)
 
     },err=>{
       console.log(err);

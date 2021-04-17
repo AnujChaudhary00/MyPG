@@ -19,6 +19,7 @@ import {MyAccountComponent} from './featureComponent/user/tenant/my-account/my-a
 import {FavouriteComponent} from './featureComponent/user/tenant/favourite/favourite/favourite.component';
 import {CancelBookingComponent} from './featureComponent/user/tenant/cancel-booking/cancel-booking.component';
 import {TenantGuard} from './routeGuard/tenant-guard/tenant.guard';
+import {RoomDetailComponent} from './featureComponent/productComponent/room/room-detail/room-detail.component';
 import { from } from 'rxjs';
 
 const routes: Routes = [
@@ -99,7 +100,16 @@ const routes: Routes = [
   },
   {
     path:'room',
-    component:RoomComponent
+    children:[
+      {
+        path:'check/:id',
+        component:RoomDetailComponent
+      },
+      {
+        path:"**",
+        component:RoomComponent
+      }
+    ]
   },
   {
     path:'food',

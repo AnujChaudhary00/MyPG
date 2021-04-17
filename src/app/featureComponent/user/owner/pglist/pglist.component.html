@@ -1,1 +1,143 @@
-<p>pglist works!</p>
+
+<div *ngIf="show" class="position-relative row p-5 m-5 bg-primary text-white">
+    <img class="position-relative img" (click)="formAppear()" src="https://img.icons8.com/ultraviolet/24/ffffff/close-window--v1.png"/>
+    <h1 class="display-4">Update Your Property Details</h1>
+    <form [formGroup]="updateform" (ngSubmit)="updatePg()">
+        <div class="row bg-primary p-3 mb-5">
+            <div class="col-md-6">
+                <div class="p-3">
+                    <div class="row mt-2">
+                        <div class="col-md-6 form-group">
+                            <label class="label ">PG/Apartment Name:</label>
+                            <input [class.is-invalid]="updateform.get('pgname').invalid && 
+                            updateform.get('pgname').touched" class="form-control" formControlName="pgname" type="text"
+                                placeholder="PG/ Apartment Name" value="">
+                        </div>
+                        <div class="col-md-6"> <label class="label">Pg Owner Name:</label>
+                            <input [class.is-invalid]="updateform.get('ownername').invalid && 
+                            updateform.get('ownername').touched" class="form-control" formControlName="ownername"
+                                type="text" value="" placeholder="Owner Name">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="label">Type:</label><br>
+                            <select class="form-control" [class.is-invalid]="updateform.get('type').invalid && 
+                            updateform.get('type').touched" formControlName="type" id="cars">
+                                <option value="house">House</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="p.g">P.G</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="label">Bed / per Room</label>
+                            <input class="form-control" [class.is-invalid]="updateform.get('bed').invalid && 
+                            updateform.get('bed').touched" formControlName="bed" type="text" placeholder="No. of Bed">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="label">Discription of your Property</label>
+                            <input class="form-control" [class.is-invalid]="updateform.get('discription').invalid && 
+                            updateform.get('discription').touched" formControlName="discription" type="text"
+                                placeholder="Enter the expected rent">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="label">Rent price</label>
+                            <input class="form-control" [class.is-invalid]="updateform.get('rent').invalid && 
+                            updateform.get('rent').touched" formControlName="rent" type="number"
+                                placeholder="Enter the expected rent">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <label class="label">No. Of Room Available for Rent</label>
+                        <input class="form-control" [class.is-invalid]="updateform.get('totalroom').invalid && 
+                        updateform.get('totalroom').touched" formControlName="totalroom" type="number"
+                            placeholder="Enter the expected rent">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">Phone:</label>
+                        <input class="form-control" [class.is-invalid]="updateform.get('contactno').invalid && 
+                        updateform.get('contactno').touched" formControlName="contactno" type="text"
+                            placeholder="enter phone number" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label">Email:</label>
+                        <input class="form-control" [class.is-invalid]="updateform.get('email').invalid && 
+                        updateform.get('email').touched" formControlName="email" type="text" placeholder="enter email id"
+                            value="">
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">City:</label><br>
+                        <select class="form-control" [class.is-invalid]="updateform.get('city').invalid && 
+                        updateform.get('city').touched" formControlName="city" id="cars">
+                            <option>Phagwara</option>
+                            <option>Jalandhar</option>
+                            <option>Ludhiana</option>
+                            <option>Kapurthala</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label">Pincode:</label>
+                        <input class="form-control" [class.is-invalid]="updateform.get('pincode').invalid && 
+                        updateform.get('pincode').touched" formControlName="pincode" type="text"
+                            placeholder="enter email id" value="">
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">State:</label>
+                        <br>
+                        <select class="form-control" [class.is-invalid]="updateform.get('state').invalid && 
+                        updateform.get('state').touched" formControlName="state" id="cars">
+                            <option *ngFor="let st of state">{{st}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label text-center">Country:</label>
+                        <br>
+                        <select class="form-control" [class.is-invalid]="updateform.get('country').invalid && 
+                        updateform.get('country').touched" formControlName="country" id="country">
+                            <option>India</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-center">
+                <button class="btn btn-dark profile-button" [disabled]="updateform.invalid" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+<h1 class="display-5 text-center">Your Properties</h1>
+<div class="row p-3">
+    <table class="table table-striped table-dark ">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Property Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">City</th>
+            <th scope="col">Available Room</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prop of PgList">
+            <th scope="row">{{prop.ownerid}}</th>
+            <td>{{prop.pgname}}</td>
+            <td>{{prop.type}}</td>
+            <td>{{prop.ownername}}</td>
+            <td>{{prop.city}}</td>
+            <td><img (click)="formAppear()" src="https://img.icons8.com/android/24/ffffff/edit.png"/>&nbsp;&nbsp;<img (click)="deletePg(prop._id)" src="https://img.icons8.com/flat-round/24/ffffff/delete-sign.png"/></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

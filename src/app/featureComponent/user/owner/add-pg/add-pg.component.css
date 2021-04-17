@@ -1,0 +1,23 @@
+img
+{
+    margin: 20px auto auto auto;
+    width: 180px;
+    height: 180px;
+    border:2px solid grey ;
+    border-radius: 100%;
+}
+
+.row
+{
+    font-family: sans-serif;
+}
+
+input{
+    border:none;
+}
+input:focus
+{
+    border: none;
+    background-color: none;
+    outline: 0;
+}

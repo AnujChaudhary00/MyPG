@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommonModule } from "@angular/common";
 import { HeaderComponent } from './featureComponent/header/header.component';
 import { FooterComponent } from './featureComponent/footer/footer.component';
 import { HomeComponent } from './featureComponent/home/home.component';
@@ -21,7 +22,9 @@ import { RouterModule } from '@angular/router';
 import { OwnerDashboardComponent } from './featureComponent/user/owner/owner-dashboard/owner-dashboard.component';
 import { TenantDashboardComponent } from './featureComponent/user/tenant/tenantdashboard/tenant-dashboard/tenant-dashboard.component';
 import { FavouriteComponent } from './featureComponent/user/tenant/favourite/favourite/favourite.component';
-
+import {AddPgComponent} from './featureComponent/user/owner/add-pg/add-pg.component';
+import {PglistComponent} from './featureComponent/user/owner/pglist/pglist.component'
+import {RoomDetailComponent} from './featureComponent/productComponent/room/room-detail/room-detail.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,14 +42,18 @@ import { FavouriteComponent } from './featureComponent/user/tenant/favourite/fav
     AuthComponent,
     OwnerDashboardComponent,
     TenantDashboardComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    AddPgComponent,
+    PglistComponent,
+    RoomDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

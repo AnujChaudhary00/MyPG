@@ -23,8 +23,10 @@ export class RegistrationComponent implements OnInit {
     return null
 
   }
+  fileToUpload: File = null;
   register: any;
-  userType: String
+  userType: String;
+  imagePreview:string;
 
   ngOnInit(): void {
 
@@ -39,7 +41,8 @@ export class RegistrationComponent implements OnInit {
         phone: ['', [Validators.required, Validators.minLength(10)]],
         gender: ['', Validators.required],
         confirmPassword: [''],
-        role: ['']
+        role: [''],
+        profilepic:[null]
       },
       {
         validator: this.matchPassword
@@ -53,12 +56,42 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  fetchvalue() {
-
+  handleFileInput(files:FileList)
+  {
+    this.fileToUpload=files.item(0);
   }
 
   onSubmit() {
-    this.authService.register(this.register.value);
+    const formdata=new FormData();
+    formdata.append('firstName',this.register.value.firstName);
+    formdata.append('lastName',this.register.value.lastName);
+    formdata.append('dob',this.register.value.dob);
+    formdata.append('email',this.register.value.email);
+    formdata.append('password',this.register.value.password);
+    formdata.append('phone',this.register.value.phone);
+    formdata.append('gender',this.register.value.gender);
+    formdata.append('role',this.register.value.role);
+    formdata.append("profilepic", this.fileToUpload, this.fileToUpload.name);
+    this.authService.register(formdata);
+  }
+
+  onSelect(event:Event)
+  {
+    const file:File=(event.target as HTMLInputElement).files[0];
+    this.register.patchValue({
+      profilepic:file
+    });
+    this.register.get('profilepic').updateValueAndValidity();
+
+    const reader=new FileReader();
+
+    reader.onload=()=>{
+      this.imagePreview=reader.result.toString();
+    };
+
+    if(file){
+      reader.readAsDataURL(file);
+    }
   }
 
 }

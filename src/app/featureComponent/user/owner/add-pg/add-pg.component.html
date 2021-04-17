@@ -1,1 +1,119 @@
-<p>add-pg works!</p>
+<div class="row">
+    <h1 class="display-3 text-center">List your property</h1>
+    <form [formGroup]="savePg" (ngSubmit)="onSubmit()">
+        <div class="row bg-light p-3 mb-5">
+            <div class="col-md-6">
+                <div class="p-3">
+                    <div class="row mt-2">
+                        <div class="col-md-6 form-group">
+                            <label class="label ">PG/Apartment Name:</label>
+                            <input [class.is-invalid]="savePg.get('pgname').invalid && 
+                            savePg.get('pgname').touched" class="form-control" formControlName="pgname" type="text"
+                                placeholder="PG/ Apartment Name" value="">
+                        </div>
+                        <div class="col-md-6"> <label class="label">Pg Owner Name:</label>
+                            <input [class.is-invalid]="savePg.get('ownername').invalid && 
+                            savePg.get('ownername').touched" class="form-control" formControlName="ownername"
+                                type="text" value="" placeholder="Owner Name">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="label">Type:</label><br>
+                            <select class="form-control" [class.is-invalid]="savePg.get('type').invalid && 
+                            savePg.get('type').touched" formControlName="type" id="cars">
+                                <option value="house">House</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="p.g">P.G</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="label">Bed / per Room</label>
+                            <input class="form-control" [class.is-invalid]="savePg.get('bed').invalid && 
+                            savePg.get('bed').touched" formControlName="bed" type="text" placeholder="No. of Bed">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="label">Discription of your Property</label>
+                            <input class="form-control" [class.is-invalid]="savePg.get('discription').invalid && 
+                            savePg.get('discription').touched" formControlName="discription" type="text"
+                                placeholder="Enter the expected rent">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="label">Rent price</label>
+                            <input class="form-control" [class.is-invalid]="savePg.get('rent').invalid && 
+                            savePg.get('rent').touched" formControlName="rent" type="number"
+                                placeholder="Enter the expected rent">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <label class="label">No. Of Room Available for Rent</label>
+                        <input class="form-control" [class.is-invalid]="savePg.get('totalroom').invalid && 
+                            savePg.get('totalroom').touched" formControlName="totalroom" type="number"
+                            placeholder="Enter the expected rent">
+                    </div>
+                    <div class="form-group">
+                             <input type="file" class="form-control" (change)="fileChangeEvent($event)"  multiple>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">Phone:</label>
+                        <input class="form-control" [class.is-invalid]="savePg.get('contactno').invalid && 
+                        savePg.get('contactno').touched" formControlName="contactno" type="text"
+                            placeholder="enter phone number" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label">Email:</label>
+                        <input class="form-control" [class.is-invalid]="savePg.get('email').invalid && 
+                        savePg.get('email').touched" formControlName="email" type="text" placeholder="enter email id"
+                            value="">
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">City:</label><br>
+                        <select class="form-control" [class.is-invalid]="savePg.get('city').invalid && 
+                        savePg.get('city').touched" formControlName="city" id="cars">
+                            <option>Phagwara</option>
+                            <option>Jalandhar</option>
+                            <option>Ludhiana</option>
+                            <option>Kapurthala</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label">Pincode:</label>
+                        <input class="form-control" [class.is-invalid]="savePg.get('pincode').invalid && 
+                        savePg.get('pincode').touched" formControlName="pincode" type="text"
+                            placeholder="enter email id" value="">
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <label class="label">State:</label>
+                        <br>
+                        <select class="form-control" [class.is-invalid]="savePg.get('state').invalid && 
+                        savePg.get('state').touched" formControlName="state" id="cars">
+                            <option *ngFor="let st of state">{{st}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label text-center">Country:</label>
+                        <br>
+                        <select class="form-control" [class.is-invalid]="savePg.get('country').invalid && 
+                        savePg.get('country').touched" formControlName="country" id="country">
+                            <option>India</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-center">
+                <button class="btn btn-secondary profile-button" [disabled]="savePg.invalid" type="submit">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

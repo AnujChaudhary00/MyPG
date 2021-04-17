@@ -1,0 +1,21 @@
+
+.updateForm
+{
+    position: absolute;
+    font-family: sans-serif;
+}
+.img{
+    width:70px;
+    height:30px;
+    margin: 0% 0% 0% 90%;
+}
+
+input{
+    border:none;
+}
+input:focus
+{
+    border: none;
+    background-color: none;
+    outline: 0;
+}

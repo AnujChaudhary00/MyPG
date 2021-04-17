@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import jquery from 'jquery';
 import bootstrap from 'bootstrap';
+import {PgServiceService} from '../../../services/pgService/pg-service.service'
+import { pgList } from 'src/app/models/pg.type';
+import { Router,ActivatedRoute,NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-room',
@@ -9,9 +12,18 @@ import bootstrap from 'bootstrap';
 })
 export class RoomComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private pgServe:PgServiceService,private route:Router, private r:ActivatedRoute) { }
+  pgList;
+  pgCount;
+  mainImage;
   ngOnInit(): void {
+    this.pgServe.getAllPg().subscribe(res=>{
+      this.pgList=res.result;
+      this.pgCount=res.recordCount;
+      this.mainImage=res.result[1].photos[0];
+    },err=>{
+      console.log(err)
+    })
     const searchFocus = document.getElementById('search-focus');
 const keys = [
   { keyCode: 'AltLeft', isTriggered: false },
@@ -39,6 +51,12 @@ window.addEventListener('keyup', (e) => {
     }
   });
 });
+  }
+
+  CheckIn(id)
+  {
+    console.log(id);
+    this.route.navigate(["check/"+id],{ relativeTo: this.r });
   }
 
 }
