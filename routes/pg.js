@@ -70,7 +70,7 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
         type:type,
         rent:rent,
         contactno:contactno,
-        email:email,
+        email:email.toLowerCase(),
         totalroom:totalroom,
         ownerid:ownerid,
         photos:photos
@@ -122,11 +122,13 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
     let email=req.body.email;
     let contactno =req.body.contactno;
     let totalroom=req.body.totalroom;
-  
+    let ownerid=req.body.ownerid;
+
     let pgObj= 
       {
         'pgname':pgname,
         'ownername':ownername,
+        'ownerid':ownerid,
         'bed:':bed,
         'city':city,
         'pincode':pincode,
@@ -135,7 +137,7 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
         'type':type,
         'rent':rent,
         'contactno':contactno,
-        'email':email,
+        'email':email.toLowerCase(),
         'totalroom,':totalroom
       };
     pgModel.findByIdAndUpdate(pgId,pgObj,{new: true},function(err,userListResponse){
@@ -150,23 +152,25 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
   });
 
 
-  router.get('/searchPg/:id',verifyToken,function(req,res,next){
+  router.get('/searchPg/:id',function(req,res,next){
     const ownerid=req.params.id;
     pgModel.find({'ownerid':ownerid},function(err,pgResponse)
     {
       if(err)
       {
         console.log(err);
-        res.send({status:500,message:"Cannot find the user"})
+        res.send({status:500,message:"Cannot find Pg"})
       }else{
-        res.send({status:200,result:pgResponse});
+        console.log(pgResponse);
+        const recordCount=pgResponse.length
+        res.send({status:200,'count':recordCount,result:pgResponse}); 
       }
     })
   });
 
 
   
-  router.get('/pgDetail/:id',verifyToken,function(req,res,next){
+  router.get('/pgDetail/:id',function(req,res,next){
     const id=req.params.id;
     pgModel.findById(id,function(err,pgResponse)
     {

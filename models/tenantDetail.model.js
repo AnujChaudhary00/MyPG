@@ -3,46 +3,20 @@ const mongoose=require('mongoose');
 
 const tenantSchema=mongoose.Schema({
 
-    pgBookedName:{
+    pgbookedname:{
         type:String,
         required:true
     },
-    pgOwnerName:
+    pgid:
     {
         type:String,
         required:true,
     },
-    homeCity:
-    {
+    ownerid:{
         type:String,
-        required:true,
-    },
-    homestate:
-    {
-        type:String,
-        required:true,
-    },
-    homeCountry:
-    {
-        type:String,
-        required:true,
-    },
-    dob:
-    {
-        type:String,
-        required:true,
+        required:true
     },
     name:
-    {
-        type:String,
-        required:true,
-    },
-    gender:
-    {
-        type:String,
-        required:true,
-    },
-    profession:
     {
         type:String,
         required:true,
@@ -55,13 +29,15 @@ const tenantSchema=mongoose.Schema({
     phone:
     {
         type:Number,
-        required:true,
-        unique:true
+        required:true
     },
     email:{
         type:String,
-        required:true,
-        unique:true
+        required:true
+    },
+    userid:{
+        type:String,
+        required:true
     }
 });
 

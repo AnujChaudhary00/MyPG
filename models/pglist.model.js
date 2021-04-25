@@ -60,7 +60,6 @@ const pgSchema=mongoose.Schema({
         ownerid:{
             type:String,
             required:true,
-            unique:false
         },
         photos:{
             type:[]

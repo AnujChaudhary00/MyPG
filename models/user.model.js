@@ -43,10 +43,10 @@ const userSchema=mongoose.Schema({
 });
 
 
-userSchema.pre('save',async function(next){
-    this.password= bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
-    next();
-})
+// userSchema.pre('save',async function(next){
+//     this.password= bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+//     next();
+// })
 
 
 
