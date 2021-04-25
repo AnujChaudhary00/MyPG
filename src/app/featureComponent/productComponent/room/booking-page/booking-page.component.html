@@ -1,1 +1,25 @@
-<p>booking-page works!</p>
+<div class="container m-5 bg-dark p-5">
+    <div class="row">
+        <p class="text-light h3">{{pg.pgname}}</p>
+        <p class="text-light text-muted">{{userdetail.firstname}} {{userdetail.lastname}}</p>
+        <p class="text-light text-muted">{{userdetail.phone}}</p>
+        <p class="text-light text-muted">{{userdetail.email}}</p>
+    </div>
+    <div class="row"><a href="../../../../../assets/room.jpg" download class="download"><img src="https://img.icons8.com/plasticine/24/ffffff/download.png" alt="download">Download contract</a></div>
+    <div class="row my-2"><div class="col-md-12"><input type="checkbox" name="checkbox" [(ngModel)]="isChecked"> <small class="text-small text-light mx-2">Please Agree the terms and condition by reading the above mentioned contract.</small></div></div>
+    <div class="row">
+       <div class="col-md-8">
+        <p class="text-muted">Rent: <span class="text-light"> {{pg.rent}}</span></p>
+        <p class="text-muted">GST: <span class="text-light"> 500</span></p>
+        <p class="text-muted">Services: <span class="text-light"> 500</span></p>
+        <p class="text-muted">Secuirty: <span class="text-light"> 500</span></p>
+        <p class="text-muted">Special discount: <span class="text-danger"> 500</span> </p>
+       </div>
+       <div class="col-md-4">
+        <span class=" h2 text-success">  <p class=" h1 text-white">Total:</p> Rs. {{pg.rent+2000}}</span><br>
+        <button class="btn btn-success mt-5" id="btnsubmit" (click)="onSubmit()" [disabled]= "isChecked ? null:true" >Book now</button>
+       </div>
+     
+         
+    </div>
+</div>

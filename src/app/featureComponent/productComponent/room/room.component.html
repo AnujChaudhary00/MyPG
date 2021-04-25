@@ -1,17 +1,17 @@
 <div class="body">
   <router-outlet></router-outlet>
     <div class="container-fluid searchBox">
-        <div class="black"></div>
+        <div class="black"><span class="display-4 text-white">Search Properties</span></div>
         <div class="input-group rounded">
-          <input type="search" class="form-control rounded" placeholder="Enter your location" aria-label="Search"
-            aria-describedby="search-addon" />
-          <span class="input-group-text border-0" id="search-addon">
+          <!-- <input type="search" class="form-control rounded" placeholder="Enter your location" aria-label="Search"
+            aria-describedby="search-addon" /> -->
+          <!-- <span class="input-group-text border-0" id="search-addon">
             <img src="https://img.icons8.com/android/24/000000/search.png"/>
-          </span>
+          </span> -->
         </div>
         <hr>  
-        <h4>Filter your search</h4>
-        <div class="filterBar">
+        <!-- <h4>Filter your search</h4> -->
+        <!-- <div class="filterBar">
             <div class="locDropdown">
                 <div class="btn-group show-on-hover">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -53,26 +53,20 @@
                     </ul>
                   </div>
             </div>
-        </div>
+        </div> -->
        </div>
     <div class="container m-5">
-        <div class="container">
-          <div class="row" *ngFor="let list of pgList">
-            <div class="col-4">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let list of pgList">
+            <div class="row">
               <img class="card-img" [src]="list.photos[0]">
             </div>
-            <div class="col-6">
+            <div class="row">
               <div class="row">
-                <div class="col-8 details">
-                  <p><strong>{{list.pgname}}</strong></p>
-                  <p><strong>Address:</strong>{{list.city}},{{list.pincode}},{{list.state}} </p>
-                  <p><strong>Rent </strong> {{list.rent}}</p>
-                  <p><strong>Type</strong>{{list.type}}</p>
-                  <p><strong>Room Available:</strong>{{list.totalroom}}</p>
-                </div>
-                <div class="col-2">
-                  <button class="btn btn-warning" (click)="CheckIn(list._id)">Check In</button>
-                </div>
+                  <p class="h4">{{list.pgname}}</p>
+                  <p class="text-muted">{{list.city}},{{list.pincode}},{{list.state}} </p>
+                  <p class="h3 text rent">Rs. {{list.rent}}</p>
+                  <button class="btn" (click)="CheckIn(list._id)">Check In</button>
               </div>
             </div>
           </div>

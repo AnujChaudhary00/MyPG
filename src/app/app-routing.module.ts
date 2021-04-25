@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './featureComponent/home/home.component';
 import {RoomComponent} from './featureComponent/productComponent/room/room.component';
@@ -21,6 +21,9 @@ import {CancelBookingComponent} from './featureComponent/user/tenant/cancel-book
 import {TenantGuard} from './routeGuard/tenant-guard/tenant.guard';
 import {RoomDetailComponent} from './featureComponent/productComponent/room/room-detail/room-detail.component';
 import { from } from 'rxjs';
+import { BookingPageComponent } from './featureComponent/productComponent/room/booking-page/booking-page.component';
+import { GrivencesComponent } from './featurecomponent/user/owner/grivences/grivences.component';
+import { ForgotComponent } from './featureComponent/user/forgot/forgot.component';
 
 const routes: Routes = [
   {
@@ -39,6 +42,10 @@ const routes: Routes = [
         component:LoginComponent
       }
     ]
+  },
+  {
+    path:'forgot-password',
+    component:ForgotComponent
   },
   {
     path:'registration',
@@ -71,6 +78,10 @@ const routes: Routes = [
       {
         path:'tenants',
         component:TenantListComponent
+      },
+      {
+        path:'grivences',
+        component:GrivencesComponent
       }
     ],
     canActivate:[OwnerGuard]
@@ -103,7 +114,17 @@ const routes: Routes = [
     children:[
       {
         path:'check/:id',
-        component:RoomDetailComponent
+        children:[
+          {
+          path:'book',
+          component:BookingPageComponent,
+          canActivate:[RouterGuardGuard]
+          },
+          {
+            path:"**",
+            component:RoomDetailComponent,
+          }
+        ]
       },
       {
         path:"**",

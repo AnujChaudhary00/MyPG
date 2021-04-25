@@ -31,7 +31,7 @@ export class AddPgComponent implements OnInit {
         type:['', Validators.required],
         rent:['', [Validators.required,Validators.pattern("[0-9]{2,5}$")]],
         contactno:['', [Validators.required, Validators.minLength(10)]],
-        email: ['', Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]$")],
+        email: ['', Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]$")],
         id:[''],
         totalroom:['',Validators.pattern("[0-9]*$")]
       }

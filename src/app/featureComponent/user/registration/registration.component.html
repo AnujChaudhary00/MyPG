@@ -1,14 +1,14 @@
 <div class="container1">
-   
-<div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-            <h3>Welcome</h3>
-            <input type="submit" name="" routerLink="/login" value="login"/><br/>
-        </div>
-        <div class="col-md-9 register-right">
-            <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <h3>Welcome</h3>
+                <input type="submit" name="" routerLink="/login" value="login" /><br />
+            </div>
+            <div class="col-md-9 register-right">
+                <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tenant-tab" data-toggle="tab" href="#tenant" role="tab" aria-controls="tenant" aria-selected="false">Tenant</a>
                 </li>
@@ -16,87 +16,125 @@
                     <a class="nav-link" id="owner-tab" data-toggle="tab" href="#owner" role="tab" aria-controls="owner" aria-selected="true">Owner</a>
                 </li>
             </ul> -->
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
-                    <h3 class="register-heading">Sign Up as a {{userType}}</h3>
-                    <form [formGroup]="register" (ngSubmit)="onSubmit()">
-                        <div class="row register-form">
-                            <div class="form-group">
-                                <div class="maxl">
-                                    <label class="radio inline"> 
-                                        <input type="radio" formControlName="role" [(ngModel)]="userType" value="tenant" checked="checked">
-                                        <span> tenant </span>  
-                                    </label>
-                                    <label class="radio inline"> 
-                                        <input type="radio" formControlName="role" [(ngModel)]="userType" value="owner">
-                                        <span> owner </span>  
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" formControlName="firstName" [class.is-invalid]="register.get('firstName').invalid && 
-                                        register.get('firstName').touched" class="form-control" placeholder="First Name *" value="" />
-                                    </div>
-                                <div class="form-group">
-                                    <input type="text"  formControlName="lastName"  [class.is-invalid]="register.get('lastName').invalid && 
-                                    register.get('lastName').touched" class="form-control" placeholder="Last Name *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password"  formControlName="password" class="form-control" placeholder="Password *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password"  class="form-control"   class="form-control" formControlName="confirmPassword"  placeholder="Confirm Password *" value="" />
-                                    <div *ngIf="register.errors?.noMatch" class="cross-validation-error-message alert alert-danger">
-                                       Confirm password doesn't match
-                                    </div>
-                                </div>
+
+            <div class="row mt-2" *ngIf="!showRegister">
+                <h5 class="h4 text-center text-secondary">Verify phone number first</h5>
+                <div class="row m-2">
+                    <div class="alert alert-danger" *ngIf="invalidOtp" role="alert">
+                        Invalid OTP
+                       </div> 
+                    <div class="col-md-4 form-group">
+                        Send code to:<br>
+                            <input type="text" class="form-control" placeholder="Enter phone number" [(ngModel)]="phoneno">
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                        <div *ngIf="!enterCode" class="col-md-3">
+                            <button class="btn btn-success" (click)="sendCode()">Send code</button>
+                        </div>
+                        <div *ngIf="enterCode" class="col-md-3">
+                            <input type="text" [(ngModel)]="code" class="form-control"
+                            placeholder="Enter verification code">
+                            <br>
+                            <button class="btn btn-success" (click)="verifyCode()">verify
+                                code</button>
+                        </div>
+
+                   
+
+                </div>
+            </div>
+
+                <div class="tab-content" id="myTabContent" *ngIf="showRegister">
+                    <div class="row"  *ngIf="showRegister">
+                        <div class="alert alert-success" role="alert">
+                            Phone Number verifyed Successfully
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
+                        <h3 class="register-heading">Sign Up as a {{userType}}</h3>
+                        <form [formGroup]="register" (ngSubmit)="onSubmit()">
+                            <div class="row register-form">
                                 <div class="form-group">
                                     <div class="maxl">
-                                        <label class="radio inline"> 
-                                            <input type="radio" formControlName="gender" value="male" checked>
-                                            <span> Male </span> 
+                                        <label class="radio inline">
+                                            <input type="radio" formControlName="role" [(ngModel)]="userType"
+                                                value="tenant" checked="checked">
+                                            <span> tenant </span>
                                         </label>
-                                        <label class="radio inline"> 
-                                            <input type="radio" formControlName="gender" value="female">
-                                            <span>Female </span> 
+                                        <label class="radio inline">
+                                            <input type="radio" formControlName="role" [(ngModel)]="userType"
+                                                value="owner">
+                                            <span> owner </span>
                                         </label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="date" formControlName="dob" class="form-control" placeholder="You D.O.B *" id="datepicker" value="" />
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="email" formControlName="email" class="form-control" placeholder="Your Email *" value="" />
-                                    <div *ngIf=" register.get('email').invalid" class="alert alert-danger">
-                                        <div>
-                                          please enter the correct email
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" formControlName="firstName" [class.is-invalid]="register.get('firstName').invalid && 
+                                        register.get('firstName').touched" class="form-control"
+                                            placeholder="First Name *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="lastName" [class.is-invalid]="register.get('lastName').invalid && 
+                                    register.get('lastName').touched" class="form-control" placeholder="Last Name *"
+                                            value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" formControlName="password" class="form-control"
+                                            placeholder="Password *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" class="form-control"
+                                            formControlName="confirmPassword" placeholder="Confirm Password *"
+                                            value="" />
+                                        <div *ngIf="register.errors?.noMatch"
+                                            class="cross-validation-error-message alert alert-danger">
+                                            Confirm password doesn't match
                                         </div>
-                                      </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" [class.is-invalid]="register.get('phone').invalid && register.get('phone').touched"  formControlName="phone" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Choose Profile Image</label>
-                                    <input  type="file" (change)="handleFileInput($event.target.files)">
-                                </div>
-                                <div class="form-group">
-                                    <div class="preview-image" *ngIf="imagePreview!=='' && imagePreview && register.get('profilepic').valid">
-                                        <img [src]="imagePreview" alt="profile-picture">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="maxl">
+                                            <label class="radio inline">
+                                                <input type="radio" formControlName="gender" value="male" checked>
+                                                <span> Male </span>
+                                            </label>
+                                            <label class="radio inline">
+                                                <input type="radio" formControlName="gender" value="female">
+                                                <span>Female </span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                                <input type="submit" class="btnRegister disabled" [disabled]="!register.valid" value="Register"/>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" formControlName="dob" class="form-control"
+                                            placeholder="You D.O.B *" id="datepicker" value="" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="email" formControlName="email" class="form-control"
+                                            placeholder="Your Email *" value="" />
+                                        <div *ngIf=" register.get('email').invalid" class="alert alert-danger">
+                                            <div>
+                                                please enter the correct email
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Choose Profile Image</label>
+                                        <input type="file" (change)="handleFileInput($event.target.files)">
+                                    </div>
+                                    <input type="submit" class="btnRegister disabled"
+                                    [disabled]="!register.valid" value="Register" />
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </div>

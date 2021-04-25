@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PgServiceService } from 'src/app/services/pgService/pg-service.service';
 import {AuthServiceService} from '../../services/authService/auth-service.service'
 
 
@@ -9,15 +11,19 @@ import {AuthServiceService} from '../../services/authService/auth-service.servic
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public auth:AuthServiceService) { }
+  constructor(public auth:AuthServiceService,public pgServe:PgServiceService,private route:Router,private router:ActivatedRoute) { }
 
   isLoggedIn=false;
+  totalCount:any
   ngOnInit(): void {
     if(localStorage.getItem('token'))
     {
       this.isLoggedIn=true;
     }
-    
+    this.pgServe.getTicket(localStorage.getItem('id')).subscribe(res=>{
+      this.totalCount=res.count;
+      console.log(res.count);
+    });
   }
-
+    
 }

@@ -31,10 +31,20 @@ export class AuthServiceService {
     }, err => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
-          this.router.navigate(["login"]);
+          alert("You already have account with us. Please Login to Continue");
         }
       }
     });
+  }
+
+  phoneverify(phoneno)
+  {
+    return this.httpClient.get<any>(`${environment.USER_BASE_URL}/${environment.PHONE.SEND_CODE}`,{params:{'phoneno':phoneno}})
+  }
+
+  getCodeVerify(code,phoneno)
+  {
+    return this.httpClient.get<any>(`${environment.USER_BASE_URL}/${environment.PHONE.CHECK_CODE}`,{params:{'phoneno':phoneno,'code':code}})
   }
 
   getRole()
@@ -76,13 +86,22 @@ export class AuthServiceService {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('Id');
+    localStorage.removeItem('id');
+    localStorage.removeItem('role');
+    localStorage.removeItem('pgid');
     this.router.navigate(['/home']);
   }
 
   getUserProfile(id: any): Observable<any> {
     return this.httpClient.get(`${environment.USER_BASE_URL}/${environment.USER.GET_USER}`, id);
   }
+
+  forgotPassword(data):Observable<any>
+  {
+    return this.httpClient.get<any>(`${environment.USER_BASE_URL}/${environment.USER.FORGOT}/${data}`);
+  }
+
+
 
   handleError(error: HttpErrorResponse) {
     let msg = '';

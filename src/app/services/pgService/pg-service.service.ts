@@ -42,4 +42,21 @@ export class PgServiceService {
     return this.httpClient.get<any>('https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions',{})
   }
 
+  createTicket(data:any,id)
+  {
+    console.log(data);
+    return this.httpClient.post<any>(`${environment.TICKET_BASE_URL}/${environment.TICKET.CREATE_TICKET}/`+id,data);
+  }
+
+  getTicket(ownerid)
+  {
+    return this.httpClient.get<any>(`${environment.TICKET_BASE_URL}/${environment.TICKET.GET_TICKET}/`+ownerid);
+  }
+
+  getMyTicket(id)
+  {
+   
+    return this.httpClient.get<any>(`${environment.TICKET_BASE_URL}/${environment.TICKET.MY_TICKET}/`+id);
+  }
+
 }

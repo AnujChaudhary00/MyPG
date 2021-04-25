@@ -2,28 +2,13 @@
     <h1 class="display-5 text-center pt-2">My account</h1>
     <p class="h4 text-dark p-3 text-center">Booked Properties</p>
     <div class="row">
-        <div class="card col-md-4 m-2" style="width: 18rem;">
-            <img src="../../../../../assets/Room3.jpg" alt="" class="card-img-top">
+        <div class="card bg-light col-md-4 m-2" *ngFor="let property of myproperty" style="width: 18rem;">
+            <!-- <img src="../../../../../assets/Room3.jpg" alt="" class="card-img-top"> -->
             <div class="card-body">
-                <h5 class="card-title">Property name</h5>
-                <p class="card-text">Property detail and pricing</p>
-                <a href="#" class="btn btn-success">View details</a>
-            </div>
-        </div>
-        <div class="card col-md-4  m-2" style="width: 18rem;">
-            <img src="../../../../../assets/Room3.jpg" alt="" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Property name</h5>
-                <p class="card-text">Property detail and pricing</p>
-                <a href="#" class="btn btn-success">View details</a>
-            </div>
-        </div>
-        <div class="card col-md-4  m-2" style="width: 18rem;">
-            <img src="../../../../../assets/Room3.jpg" alt="" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Property name</h5>
-                <p class="card-text">Property detail and pricing</p>
-                <a href="#" class="btn btn-success">View details</a>
+                <h5 class="card-title">{{property.pgbookedname}}</h5>
+                <p class="card-text"><b>Property Id: </b>{{property.pgid}}</p>
+                <p class="card-text"><b>Seller Id: </b>{{property.ownerid}}</p>
+                <p class="text-dark text-weight-bold"><b>Rent Paid:</b> {{property.payment}}</p>
             </div>
         </div>
     </div>

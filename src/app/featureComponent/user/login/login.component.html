@@ -8,22 +8,22 @@
                 <form [formGroup]="login" (ngSubmit)="onSubmit()" class="box">
                     <span class="text-danger" *ngIf="error">{{showError$  | async}}</span>
                     <div class="form">
-                        <a class="text-white" routerLink="/Registration">New User? Create your Account now</a>
+                        <a class="text-white" routerLink="/registration">New User? Create your Account now</a>
                         <p  class="text-white">Or</p>
                         <h1>Login</h1>
                     <div class="show">
                         <p class="text-muted"> Please enter your login and password!</p> 
                         <input type="text" formControlName="email" placeholder="Enter your email">
                          <input type="password" formControlName="password" placeholder="Password">
-                          <a class="forgot text-muted" href="#">Forgot password?</a> 
+                          <a class="forgot text-muted" routerLink="/forgot-password">Forgot password?</a> 
                           <input type="submit" name="submit" value="Login">
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <ul class="social-network social-circle">
                                 <li><a href="#" class="icoFacebook" title="Facebook"><img src="https://img.icons8.com/doodle/50/000000/facebook-new.png"/></a></li>
                                 <li><a href="#" class="icoTwitter" title="Twitter"><img src="https://img.icons8.com/plasticine/50/000000/twitter--v2.png"/></a></li>
                                 <li><a href="#" class="icoGoogle" title="Google +"><img src="https://img.icons8.com/doodle/48/000000/google-plus-circled.png"/></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     </div>
                 </form>

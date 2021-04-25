@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {PgServiceService} from '../../../../../services/pgService/pg-service.service';
+import {TenantServiceService} from '../../../../../services/tenantService/tenant-service.service';
+
 
 @Component({
   selector: 'app-tenant-dashboard',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TenantDashboardComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public pgserve:PgServiceService, public tenantServe:TenantServiceService) { }
+  tenantCount:Number=0;
+  grivenceCount:Number=0;
   ngOnInit(): void {
+
+    this.tenantServe.myBookings(localStorage.getItem('id')).subscribe(res=>{
+      this.tenantCount=res.count;
+    })
+
+
+    this.pgserve.getMyTicket(localStorage.getItem('id')).subscribe(res=>{
+      this.grivenceCount=res.count;
+    });
+  }
+
+
+  showDashboard:boolean=true;
+
+  donShow()
+  {
+    this.showDashboard=false;
   }
 
 }

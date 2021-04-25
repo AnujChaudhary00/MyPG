@@ -19,3 +19,7 @@ input:focus
     background-color: none;
     outline: 0;
 }
+
+.position-relative{
+    background-color: rgb(0, 0, 0);
+}

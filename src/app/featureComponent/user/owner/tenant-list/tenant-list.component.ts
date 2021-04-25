@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TenantServiceService} from '../../../../services/tenantService/tenant-service.service'
 
 @Component({
   selector: 'app-tenant-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TenantListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private tenantServe:TenantServiceService) { }
+    myTenants:any;
+    count:any;
   ngOnInit(): void {
+    this.tenantServe.getMyTenant(localStorage.getItem('id')).subscribe(res=>{
+      this.myTenants=res.result;
+      this.count=res.count;
+    })
   }
 
 }

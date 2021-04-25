@@ -1,16 +1,15 @@
 <nav *ngIf="auth.isLoggedIn()" class="navbar  navbar-light  navbar-expand-md bg-dark justify-content-center">
     <ul class="navbar-nav mx-auto text-center">
-        <li class="nav-item active d-flex flex-direction-row">
+        <li class="nav-item active">
             <a class="nav-link text-white" *ngIf="auth.getRole()=='owner' " routerLink="dashboard">
-                <img src="https://img.icons8.com/metro/26/ffffff/contacts.png"/>&nbsp;&nbsp;
-                <span class="sr-only">Dashboard</span>
-               <button class="btn btn-secondary" type="button">Notification<span class="badge badge-light">0</span></button>
+                <button class="btn btn-secondary mx-5" type="button"><img style="box-shadow: 1px 1px 10px black;" src="https://img.icons8.com/metro/26/ffffff/contacts.png"/>&nbsp;&nbsp;
+                <span class="sr-only">Dashboard</span></button>
+               <button class="btn btn-secondary mx-5" routerLink="dashboard" type="button">Grivences<span class="badge bg-danger mx-2" style="box-shadow: 1px 1px 10px black;" >{{totalCount}}</span></button>
             </a>
             <a class="nav-link text-white" *ngIf="auth.getRole()=='tenant' " routerLink="tenant-dashboard">
                 <img src="https://img.icons8.com/metro/26/ffffff/contacts.png"/>&nbsp;&nbsp;
                 <span class="sr-only">Dashboard</span>
             </a>
-            <button class="btn btn-secondary mx-2" type="button">Notification<span class="badge badge-light">0</span></button>
         </li>
     </ul>
 </nav>
@@ -25,7 +24,7 @@
                 <a class="nav-link" routerLinkActive="active" routerLink="home"><span class="sr-only">Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="room">Search Properties</a>
+                <a class="nav-link" routerLink="room" *ngIf="auth.getRole()!='owner' ">Search Properties</a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" routerLink="food">Food</a>

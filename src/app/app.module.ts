@@ -14,8 +14,7 @@ import { LoginComponent } from './featureComponent/user/login/login.component';
 import { RegistrationComponent } from './featureComponent/user/registration/registration.component';
 import { MyAccountComponent } from './featureComponent/user/tenant/my-account/my-account.component';
 import { MyProfileComponent } from './featureComponent/user/my-profile/my-profile.component'; 
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthComponent } from './featureComponent/user/auth/auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AuthInterceptorInterceptor} from './interceptor/auth-interceptor.interceptor';
 import { RouterModule } from '@angular/router';
@@ -24,7 +23,12 @@ import { TenantDashboardComponent } from './featureComponent/user/tenant/tenantd
 import { FavouriteComponent } from './featureComponent/user/tenant/favourite/favourite/favourite.component';
 import {AddPgComponent} from './featureComponent/user/owner/add-pg/add-pg.component';
 import {PglistComponent} from './featureComponent/user/owner/pglist/pglist.component'
-import {RoomDetailComponent} from './featureComponent/productComponent/room/room-detail/room-detail.component'
+import {RoomDetailComponent} from './featureComponent/productComponent/room/room-detail/room-detail.component';
+import {BookingPageComponent} from './featureComponent/productComponent/room/booking-page/booking-page.component';
+import { GrivencesComponent } from './featurecomponent/user/owner/grivences/grivences.component'
+import { TenantListComponent } from './featureComponent/user/owner/tenant-list/tenant-list.component';
+import { ForgotComponent } from './featureComponent/user/forgot/forgot.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,15 +43,20 @@ import {RoomDetailComponent} from './featureComponent/productComponent/room/room
     RegistrationComponent,
     MyAccountComponent,
     MyProfileComponent,
-    AuthComponent,
     OwnerDashboardComponent,
     TenantDashboardComponent,
     FavouriteComponent,
     AddPgComponent,
     PglistComponent,
-    RoomDetailComponent
+    RoomDetailComponent,
+    BookingPageComponent,
+    MyAccountComponent,
+    GrivencesComponent,
+    TenantListComponent,
+    ForgotComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,

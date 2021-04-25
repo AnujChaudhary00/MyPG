@@ -13,7 +13,7 @@ export class RouterGuardGuard implements CanActivate {
       {
         return true
       }else{
-        this._router.navigate(['/Login'])
+        this._router.navigate(['/login'])
         return false
       }
   }

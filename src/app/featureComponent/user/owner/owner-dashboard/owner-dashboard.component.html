@@ -1,13 +1,29 @@
 <div class="row">
-    <nav class="navbar p-0 col-2 d-flex flex-column bg-dark text-justify">
+    <nav class="navbar p-0 col-md-2 col-sm-12 d-flex flex-column bg-dark text-justify">
         <ul>
-            <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a routerLink="my-profile">Profile</a></li>
-            <li><img src="https://img.icons8.com/material/24/ffffff/cottage.png"/><a routerLink="add-PG">Add your PG</a></li>
-            <li><img src="https://img.icons8.com/material/24/ffffff/list.png"/> <a routerLink="pg-List">PG List</a></li>
-            <li><img src="https://img.icons8.com/material/24/ffffff/business-contact.png"/> <a routerLink="tenants">Tenant Details</a></li>
+            <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a routerLink="my-profile" (click)="donShow()">Profile</a></li>
+            <li><img src="https://img.icons8.com/material/24/ffffff/cottage.png"/><a routerLink="add-PG"  (click)="donShow()">Add your PG</a></li>
+            <li><img src="https://img.icons8.com/material/24/ffffff/list.png"/> <a routerLink="pg-List"  (click)="donShow()">PG List</a></li>
+            <li><img src="https://img.icons8.com/material/24/ffffff/business-contact.png"/> <a routerLink="tenants"  (click)="donShow()">Tenant Details</a></li>
+            <li><img src="https://img.icons8.com/material/24/ffffff/business-contact.png"/> <a routerLink="grivences"  (click)="donShow()">Grivences</a></li>
         </ul>
     </nav>
-      <div class="col-10">
+      <div class="col-md-10 col-sm-12">
+          <div class="row p-5" *ngIf="showDashboard">
+              <p class="display-4 text-center p-1 m-1">Dashboard</p>
+            <div class="card-body col-md-4 bg-light">
+                <h5 class="card-title text-center ">Number of Property Added</h5>
+                <p class="text-success display-3 text-center">{{pgCount}}</p>
+            </div>
+            <div class="card-body col-md-4 bg-light">
+                <h5 class="card-title text-center">Total Booked Properties</h5>
+                <p class="text-success display-3 text-center ">{{tenantCount}}</p>
+            </div>
+            <div class="card-body col-md-4 bg-light">
+                <h5 class="card-title  text-center">Grivences </h5>
+                <p class="text-success display-3 text-center">{{grivenceCount}}</p>
+            </div>
+          </div>
        <router-outlet></router-outlet>
       </div>
 </div>

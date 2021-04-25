@@ -27,6 +27,11 @@ export class RegistrationComponent implements OnInit {
   register: any;
   userType: String;
   imagePreview:string;
+  phoneno:string;
+  enterCode:boolean
+  code:Number;
+  showRegister:boolean=false;
+  invalidOtp:boolean=false; 
 
   ngOnInit(): void {
 
@@ -38,7 +43,6 @@ export class RegistrationComponent implements OnInit {
         dob: ['', Validators.required],
         email: ['', Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
         password: [''],
-        phone: ['', [Validators.required, Validators.minLength(10)]],
         gender: ['', Validators.required],
         confirmPassword: [''],
         role: [''],
@@ -61,6 +65,36 @@ export class RegistrationComponent implements OnInit {
     this.fileToUpload=files.item(0);
   }
 
+    sendCode()
+    {
+      this.authService.phoneverify(this.phoneno).subscribe(res=>{
+        console.log(res);
+        if(res.status=="pending")
+        {
+          this.enterCode=true;
+          console.log("sent");
+          console.log(this.enterCode);
+        }
+      })
+    }
+
+    verifyCode()
+    {
+      console.log("Verfiyung...")
+      this.authService.getCodeVerify(this.code,this.phoneno).subscribe(res=>{
+        if(res.status==="approved")
+        {
+          this.showRegister=true;
+          this.enterCode=false;
+          console.log(res);
+        }
+        else{
+          console.log("Invalid otp");
+          this.invalidOtp=true;
+        }
+      })
+    }
+
   onSubmit() {
     const formdata=new FormData();
     formdata.append('firstName',this.register.value.firstName);
@@ -68,10 +102,11 @@ export class RegistrationComponent implements OnInit {
     formdata.append('dob',this.register.value.dob);
     formdata.append('email',this.register.value.email);
     formdata.append('password',this.register.value.password);
-    formdata.append('phone',this.register.value.phone);
+    formdata.append('phone',this.phoneno);
     formdata.append('gender',this.register.value.gender);
     formdata.append('role',this.register.value.role);
     formdata.append("profilepic", this.fileToUpload, this.fileToUpload.name);
+    console.log(formdata);
     this.authService.register(formdata);
   }
 

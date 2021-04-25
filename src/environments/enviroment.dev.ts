@@ -4,6 +4,7 @@ export const environment = {
     USER_BASE_URL:'http://localhost:3000/users',
     PG_BASE_URL:'http://localhost:3000/pg',
     TENANT_BASE_URL:'http://localhost:3000/tenant',
+    TICKET_BASE_URL:'http://localhost:3000/ticket',
     USER:
     {
         GET_USER_LOGIN:'login',
@@ -13,7 +14,8 @@ export const environment = {
         UPDATE_USER:'update',
         DELETE_USER:'delete',
         LOGGED_OUT:'logout',
-        LOGIN:'isLogin'
+        LOGIN:'isLogin',
+        FORGOT:'forgotPassword'
     },
     PG:
     {
@@ -25,12 +27,21 @@ export const environment = {
     },
     TENANT:
     {
-        GET_ALL_TENANT:'listTenant',
-        GET_TENANT:'searchTenant',
-        CREATE_TENANT:'bookPg',
-        UPDATE_TENANT:'updateTenant',
-        DELETE_TENANT:'deleteTenant'
+        GET_MY_TENANT:'listTenant',
+        BOOK_PG:'bookPg',
+        MY_BOOKINGS:'mybookings',
+        CANCEL_BOOKING:'cencelbooking'
     },
+    PHONE:
+    {
+        SEND_CODE:'verify',
+        CHECK_CODE:'verifycode'
+    },
+    TICKET:{
+        CREATE_TICKET:'createTicket',
+        GET_TICKET:'getTicket',
+        MY_TICKET:'myTicket'
+    }
 
   };
   

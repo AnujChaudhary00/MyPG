@@ -3,3 +3,39 @@
     color:red;
     cursor: pointer;
 }
+
+.form-group
+{
+    margin-bottom: 5px;
+}
+
+.form-control
+{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+   border-bottom: 2px solid black;
+   border-bottom-right-radius: 0px;
+   border-bottom-right-radius: 0px;
+}
+
+.boxticket
+{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.col-md-4
+{
+    width:200px;
+    cursor: pointer;
+}
+
+.card:hover{
+    box-shadow: 5px 5px 15px grey;
+}
+
+.card img:hover{
+    box-shadow: 5px 5px 15px grey;
+}

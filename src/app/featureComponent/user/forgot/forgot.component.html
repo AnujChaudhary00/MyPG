@@ -1,1 +1,29 @@
-<p>forgot works!</p>
+<div class="container1">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div class="card">
+                <span class="alert alert-danger text-center" *ngIf="someError">Internal Server Error Occured! Please try after some time.</span>
+                <span class="alert alert-success text-center" *ngIf="alertSuccess">Email With your Account password has been sent to your email Adress Please Check and Login Again</span>
+                <span class="alert alert-danger text-center" *ngIf="alertFail">Email not found !Please enter registered Email only</span>
+                <form [formGroup]="forgot" (ngSubmit)="onSubmit()" class="box">
+                    <div class="form">
+                        <p class="text-white h4">Get Your Password At Email</p>
+                    <div class="show">
+                        <p class="text-muted"> Please enter your email Id</p> 
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="email" placeholder="Enter your email">
+                            <div *ngIf=" forgot.get('email').invalid" class="alert alert-danger">
+                                <div>
+                                    please enter the correct email
+                                </div>
+                            </div>
+                        </div>
+                       
+                          <input type="submit" name="submit" value="send">
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -39,7 +39,7 @@
                             <label class="label">Discription of your Property</label>
                             <input class="form-control" [class.is-invalid]="savePg.get('discription').invalid && 
                             savePg.get('discription').touched" formControlName="discription" type="text"
-                                placeholder="Enter the expected rent">
+                                placeholder="Write something about your Property">
                         </div>
                         <div class="col-md-6">
                             <label class="label">Rent price</label>
@@ -52,7 +52,7 @@
                         <label class="label">No. Of Room Available for Rent</label>
                         <input class="form-control" [class.is-invalid]="savePg.get('totalroom').invalid && 
                             savePg.get('totalroom').touched" formControlName="totalroom" type="number"
-                            placeholder="Enter the expected rent">
+                            placeholder="Total Room Ava">
                     </div>
                     <div class="form-group">
                              <input type="file" class="form-control" (change)="fileChangeEvent($event)"  multiple>   
@@ -89,7 +89,7 @@
                         <label class="label">Pincode:</label>
                         <input class="form-control" [class.is-invalid]="savePg.get('pincode').invalid && 
                         savePg.get('pincode').touched" formControlName="pincode" type="text"
-                            placeholder="enter email id" value="">
+                            placeholder="Enter Pincode*" value="">
                     </div>
                 </div>
                 <div class="row p-3">

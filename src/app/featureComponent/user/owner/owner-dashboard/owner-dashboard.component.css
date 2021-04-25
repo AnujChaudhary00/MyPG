@@ -23,9 +23,23 @@
 .row ul li:hover{
   background-color: #292f35;
 }
+.card-body{
+  
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+  box-shadow: .5px .5px 10px grey;
+}
+.card-body:hover{
+  box-shadow: 2px 2px 15px grey;
+}
 
+@media only screen and (max-width: 768px) {
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .navbar ul li
+  {
+    display: inline;
+    padding: auto;
+  }
+
 }

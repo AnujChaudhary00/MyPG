@@ -1,0 +1,27 @@
+
+
+<div class="container">
+    <p class="display-5 text-center">Grievance</p>
+    <div class="row boxticket p-5">
+        <div class="card one">
+            <span class=" text-danger">Total grievance : {{totalCount}}</span>
+            <span class="text-success">Resolved grievance : {{totalCount}}</span>
+        </div>
+        <div class=" col-md-12 container">
+            <div class="row">
+                <div class="card m-2" *ngFor="let res of grivences">
+                    <div class="card-body">
+                        <h5 class="card-title">{{res.type}}</h5>
+                        <p class="card-text">Property Id :{{res.pgid}}</p>
+                        <h6 class="card-subtitle mb-2" [ngStyle]="{'color':res.status=='Pending'?'red':'green'}">Status:{{res.status}} </h6>
+                        <p class="card-text">{{res.discription}}</p>
+                        <p class="card-text">{{res.phonemail}}</p>
+                        <button class="btn btn-success">click if Resolved</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

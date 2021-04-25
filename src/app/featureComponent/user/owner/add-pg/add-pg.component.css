@@ -12,8 +12,10 @@ img
     font-family: sans-serif;
 }
 
-input{
+input,textarea,select{
     border:none;
+    background-color: whitesmoke;
+    border-bottom: 2px solid black;
 }
 input:focus
 {

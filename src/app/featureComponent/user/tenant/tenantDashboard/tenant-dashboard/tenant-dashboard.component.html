@@ -1,13 +1,24 @@
 <div class="row">
     <nav class="navbar p-0 col-2 d-flex flex-column bg-dark text-justify">
         <ul>
-            <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a routerLink="my-account">My Account</a></li>
-            <li><img src="https://img.icons8.com/material-outlined/24/ffffff/like--v2.png"/><a routerLink="favourite">Favourites</a></li>
-            <li><img src="https://img.icons8.com/ios-glyphs/24/ffffff/delete-sign.png"/><a routerLink="cancel-booking">Cancel Booking</a></li>
-            <li><img src="https://img.icons8.com/carbon-copy/24/ffffff/gear.png"/> <a routerLink="my-profile">Profile Setting</a></li>
+            <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a (click)="donShow()" routerLink="my-account">My Account</a></li>
+            <!-- <li><img src="https://img.icons8.com/ios-glyphs/24/ffffff/delete-sign.png"/><a routerLink="cancel-booking">Cancel Booking</a></li> -->
+            <li><img src="https://img.icons8.com/emoji/24/ffffff/white-question-mark-emoji.png"/><a (click)="donShow()" routerLink="favourite">Create Ticket/Help</a></li>
+            <li><img src="https://img.icons8.com/carbon-copy/24/ffffff/gear.png"/> <a (click)="donShow()" routerLink="my-profile">Profile Setting</a></li>
         </ul>
     </nav>
       <div class="col-10">
+        <div class="row p-5" *ngIf="showDashboard">
+            <p class="display-4 text-center p-1 m-1">Dashboard</p>
+          <div class="card-body col-md-4 bg-light">
+              <h5 class="card-title text-center">Booked Properties</h5>
+              <p class="text-success display-3 text-center ">{{tenantCount}}</p>
+          </div>
+          <div class="card-body col-md-4 bg-light">
+              <h5 class="card-title  text-center">Grivences </h5>
+              <p class="text-success display-3 text-center">{{grivenceCount}}</p>
+          </div>
+        </div>
        <router-outlet></router-outlet>
       </div>
 </div>
