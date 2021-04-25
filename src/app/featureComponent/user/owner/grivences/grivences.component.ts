@@ -16,7 +16,6 @@ export class GrivencesComponent implements OnInit {
     this.pgServe.getTicket(localStorage.getItem('id')).subscribe(res=>{
       this.grivences=res.result;
       this.totalCount=res.count;
-      console.log(this.grivences);
     })
   }
 

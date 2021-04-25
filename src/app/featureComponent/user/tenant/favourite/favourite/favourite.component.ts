@@ -10,12 +10,10 @@ export class FavouriteComponent implements OnInit {
   constructor(private ticketServe:PgServiceService) { }
   ticket:any
   myTicket:any;
-  count:Number=0;
   ngOnInit(): void {
 
     this.ticketServe.getMyTicket(localStorage.getItem('id')).subscribe(res=>{
       this.myTicket=res.result;
-      this.count=res.count;
     })
 
   }
