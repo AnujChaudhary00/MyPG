@@ -23,7 +23,9 @@ export const environment = {
         GET_PG:'searchPg',
         CREATE_PG:'addPg',
         UPDATE_PG:'updatePg',
-        DELETE_PG:'deletePg'
+        DELETE_PG:'deletePg',
+        PG_BY_LOCATION:'searchLocation',
+        // PG_BY_RENT:'searchRent',
     },
     TENANT:
     {
@@ -40,7 +42,8 @@ export const environment = {
     TICKET:{
         CREATE_TICKET:'createTicket',
         GET_TICKET:'getTicket',
-        MY_TICKET:'myTicket'
+        MY_TICKET:'myTicket',
+        UPDATE_TICKET:'updateTicket'
     }
 
   };

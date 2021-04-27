@@ -14,7 +14,7 @@ export class OwnerDashboardComponent implements OnInit {
 
   pgCount:Number=0;
   tenantCount:Number=0;
-  grivenceCount:Number=0;
+  grivenceCount:any;
   ngOnInit(): void {
 
     this.pgserve.getPgDetail(localStorage.getItem('id')).subscribe(res=>{
@@ -22,9 +22,9 @@ export class OwnerDashboardComponent implements OnInit {
       this.pgCount=res.count;
     });
 
-    this.pgserve.getTicket(localStorage.getItem('id')).subscribe(res=>{
-      this.grivenceCount=res.count;
-    });
+   this.pgserve.grivence$.subscribe(res=>{
+    this.grivenceCount =res;
+   });
 
 
     this.tenantServe.getMyTenant(localStorage.getItem('id')).subscribe(res=>{
@@ -37,5 +37,10 @@ export class OwnerDashboardComponent implements OnInit {
     donShow()
     {
       this.showDashboard=false;
+    }
+
+    donShowNo()
+    {
+      this.showDashboard=true;
     }
 }

@@ -67,15 +67,17 @@ export class RegistrationComponent implements OnInit {
 
     sendCode()
     {
+      if(this.phoneno==null || this.phoneno.length!=10){
+        alert("Please Enter 10 digit Phone Number ")
+    }else{
       this.authService.phoneverify(this.phoneno).subscribe(res=>{
         console.log(res);
         if(res.status=="pending")
         {
           this.enterCode=true;
-          console.log("sent");
-          console.log(this.enterCode);
         }
-      })
+       })
+     }
     }
 
     verifyCode()

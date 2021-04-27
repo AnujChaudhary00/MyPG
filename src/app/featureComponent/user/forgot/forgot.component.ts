@@ -27,6 +27,7 @@ export class ForgotComponent implements OnInit {
       if(res.status==200)
       {
         this.alertSuccess=true;
+        this.alertFail=false;
       }
       else if(res.status==401){
         this.alertFail=true;

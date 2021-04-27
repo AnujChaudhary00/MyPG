@@ -1,4 +1,4 @@
-<nav *ngIf="auth.isLoggedIn()" class="navbar  navbar-light  navbar-expand-md bg-dark justify-content-center">
+<nav *ngIf="auth.isLoggedIn()" class="navbar  navbar-dark  navbar-expand-md bg-dark justify-content-center">
     <ul class="navbar-nav mx-auto text-center">
         <li class="nav-item active">
             <a class="nav-link text-white" *ngIf="auth.getRole()=='owner' " routerLink="dashboard">
@@ -13,7 +13,7 @@
         </li>
     </ul>
 </nav>
-<nav class="navbar  navbar-light  navbar-expand-md bg-light justify-content-center">
+<nav class="navbar  navbar-dark  navbar-expand-md justify-content-center">
     <a href="/" class="navbar-brand">&nbsp;&nbsp;Lease Renting</a>
     <button class="navbar-toggler m-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
         <span class="navbar-toggler-icon"></span>

@@ -1,3 +1,13 @@
 .card:hover{
     box-shadow: 2px 2px 15px grey;
 }
+
+.color1
+{
+    color:rgb(18, 146, 138)
+}
+
+.color2
+{
+    color:rgb(228, 72, 61)
+}

@@ -24,9 +24,11 @@ export class AuthServiceService {
       localStorage.setItem('role',res.role);
       if(res.role=='owner')
       {
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['dashboard']);
+        location.reload();
       }else{
-        this.router.navigate(['tenant-dashboard'])
+        this.router.navigate(['tenant-dashboard']);
+        location.reload();
       }
     }, err => {
       if (err instanceof HttpErrorResponse) {
@@ -36,6 +38,7 @@ export class AuthServiceService {
       }
     });
   }
+
 
   phoneverify(phoneno)
   {
@@ -57,9 +60,13 @@ export class AuthServiceService {
     return this.httpClient.post<any>(`${environment.USER_BASE_URL}/${environment.USER.GET_USER_LOGIN}`, data)
       .subscribe((res: any) => {
         console.log(res);
-        if ((res.status == 404 || res.status==401)|| res.status==500){
-          console.log(res.status);
+        if (res.status == 404){
+         alert("Email not found");
           this.router.navigate(['login/'+ res.status]);
+        }
+        else if(res.status==401 || res.status==500)
+        {
+          alert("Invalid Passowrd");
         }
         else {
           localStorage.setItem('token',res.token);
@@ -67,9 +74,15 @@ export class AuthServiceService {
           localStorage.setItem('role',res.role);
           if(res.role=='owner')
           {
-            this.router.navigate(['dashboard'])
+            this.router.navigate(['dashboard']);
+            setTimeout(function (){
+              location.reload();
+            },1000);
           }else{
-            this.router.navigate(['user'])
+            this.router.navigate(['tenant-dashboard']);
+            setTimeout(function (){
+              location.reload();
+            },1000);
           }
         }
       }, err => { this.handleError(err).subscribe(msg => { alert(msg) }) })

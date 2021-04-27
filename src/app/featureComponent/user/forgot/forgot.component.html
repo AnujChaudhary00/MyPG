@@ -3,7 +3,9 @@
         <div class="col d-flex justify-content-center">
             <div class="card">
                 <span class="alert alert-danger text-center" *ngIf="someError">Internal Server Error Occured! Please try after some time.</span>
-                <span class="alert alert-success text-center" *ngIf="alertSuccess">Email With your Account password has been sent to your email Adress Please Check and Login Again</span>
+                <span class="alert alert-success text-center" *ngIf="alertSuccess">Email With your Account password has been sent to your email Adress Please Check and Login Again
+                    <button class="btn btn-primary" routerLink="/login">Login</button>
+                </span>
                 <span class="alert alert-danger text-center" *ngIf="alertFail">Email not found !Please enter registered Email only</span>
                 <form [formGroup]="forgot" (ngSubmit)="onSubmit()" class="box">
                     <div class="form">

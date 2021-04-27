@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PgServiceService} from '../../../../../services/pgService/pg-service.service'
+import {TenantServiceService} from '../../../../../services/tenantService/tenant-service.service';
+
 @Component({
   selector: 'app-favourite',
   templateUrl: './favourite.component.html',
@@ -7,7 +9,7 @@ import {PgServiceService} from '../../../../../services/pgService/pg-service.ser
 })
 export class FavouriteComponent implements OnInit {
 
-  constructor(private ticketServe:PgServiceService) { }
+  constructor(private ticketServe:PgServiceService,private dashServe:TenantServiceService) { }
   ticket:any
   myTicket:any;
   ngOnInit(): void {
@@ -17,6 +19,7 @@ export class FavouriteComponent implements OnInit {
     })
 
   }
+
   create:boolean=false;
   history:boolean=false;
   type:String;

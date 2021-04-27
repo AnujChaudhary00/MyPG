@@ -7,15 +7,20 @@
 #user li a
 {
    font-size: 15px;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 254, 254);
     border-radius: 25px;
-    color: black;
+    color: rgb(255, 255, 255);
     margin-left: 5px;
 }
 
 #user li a:hover{
     transition: .5s;
+    background-color: rgb(255, 253, 253);
+    color:rgb(2, 2, 2);
+}
+
+.navbar-dark
+{
     background-color: black;
-    color:white;
 }
 

@@ -5,7 +5,6 @@
     <div class="row boxticket p-5">
         <div class="card one">
             <span class=" text-danger">Total grievance : {{totalCount}}</span>
-            <span class="text-success">Resolved grievance : {{totalCount}}</span>
         </div>
         <div class=" col-md-12 container">
             <div class="row">
@@ -16,7 +15,7 @@
                         <h6 class="card-subtitle mb-2" [ngStyle]="{'color':res.status=='Pending'?'red':'green'}">Status:{{res.status}} </h6>
                         <p class="card-text">{{res.discription}}</p>
                         <p class="card-text">{{res.phonemail}}</p>
-                        <button class="btn btn-success">click if Resolved</button>
+                        <button class="btn btn-success" *ngIf="res.status!='resolved'" (click)="resolve()" >click to resolve</button>
                     </div>
                 </div>
             </div>

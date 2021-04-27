@@ -35,6 +35,11 @@
   box-shadow: 2px 2px 15px grey;
 }
 
+.bgprimary
+{
+  background-color: rgb(104, 161, 157);
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}

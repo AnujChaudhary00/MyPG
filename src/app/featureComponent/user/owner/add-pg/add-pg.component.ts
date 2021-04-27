@@ -15,6 +15,7 @@ export class AddPgComponent implements OnInit {
   constructor(private fb: FormBuilder,private pgServe:PgServiceService,private router:Router) { }
   savePg:FormGroup;
   state=['Andhra Pradesh','	Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal'];
+  city=['Law gate', 'Jalandhar', 'Ludhiana', 'Phagwara', 'Hardaspur','Chandigarh', 'Delhi','Mumbai','Kolkata','Ahemdabad','Bhopal','Srinagar','Patna','Meerut','Lucknow','Karnal','Ambala','Bhiwani','Banglore', 'Gurgaon', 'Noida']
   filesToUpload: Array<File> = [];
 
   ngOnInit(): void {

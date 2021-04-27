@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-3 register-left">
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                <h3>Welcome</h3>
+                <h3>Welcome to LMS</h3>
                 <input type="submit" name="" routerLink="/login" value="login" /><br />
             </div>
             <div class="col-md-9 register-right">
@@ -17,28 +17,29 @@
                 </li>
             </ul> -->
 
-            <div class="row mt-2" *ngIf="!showRegister">
-                <h5 class="h4 text-center text-secondary">Verify phone number first</h5>
-                <div class="row m-2">
+                <div class="row mt-5 p-5 text-center" *ngIf="!showRegister">
+                <h5 class="h4 text-center text-secondary">Enter Phone Number</h5>
+                <div class="row m-2  flex-direction-row justify-content-center align-items-md-center">
                     <div class="alert alert-danger" *ngIf="invalidOtp" role="alert">
                         Invalid OTP
                        </div> 
                     <div class="col-md-4 form-group">
-                        Send code to:<br>
-                            <input type="text" class="form-control" placeholder="Enter phone number" [(ngModel)]="phoneno">
+                            <input type="text" class="text-center"  placeholder="Enter phone number" [(ngModel)]="phoneno">
                     </div>
                 </div>
 
-                <div class="row m-2">
+                <div class="row m-2 d-flex flex-direction-row justify-content-center">
                         <div *ngIf="!enterCode" class="col-md-3">
-                            <button class="btn btn-success" (click)="sendCode()">Send code</button>
+                            <button class="btn btn-success"  (click)="sendCode()">Send code</button>
                         </div>
                         <div *ngIf="enterCode" class="col-md-3">
+                            <p class="text-success">Code sent! check your Message box</p>
                             <input type="text" [(ngModel)]="code" class="form-control"
-                            placeholder="Enter verification code">
+                            placeholder="Enter code sent " required >
                             <br>
                             <button class="btn btn-success" (click)="verifyCode()">verify
                                 code</button>
+                                <a class="nav-link text-secondary" (click)="sendCode()">Send Again</a>
                         </div>
 
                    
@@ -47,26 +48,22 @@
             </div>
 
                 <div class="tab-content" id="myTabContent" *ngIf="showRegister">
-                    <div class="row"  *ngIf="showRegister">
-                        <div class="alert alert-success" role="alert">
-                            Phone Number verifyed Successfully
-                        </div>
-                    </div>
                     <div class="tab-pane fade show active" id="tenant" role="tabpanel" aria-labelledby="tenant-tab">
+                        <p class="text-success text-center text-small" *ngIf="showRegister">Phone Number verifyed Successfully</p>
                         <h3 class="register-heading">Sign Up as a {{userType}}</h3>
                         <form [formGroup]="register" (ngSubmit)="onSubmit()">
                             <div class="row register-form">
                                 <div class="form-group">
                                     <div class="maxl">
                                         <label class="radio inline">
-                                            <input type="radio" formControlName="role" [(ngModel)]="userType"
-                                                value="tenant" checked="checked">
-                                            <span> tenant </span>
+                                            <input type="radio"  formControlName="role" [(ngModel)]="userType"
+                                                value="Tenant">
+                                            <span> Tenant </span>
                                         </label>
                                         <label class="radio inline">
                                             <input type="radio" formControlName="role" [(ngModel)]="userType"
-                                                value="owner">
-                                            <span> owner </span>
+                                                value="Owner">
+                                            <span> Owner </span>
                                         </label>
                                     </div>
                                 </div>
@@ -78,7 +75,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" formControlName="lastName" [class.is-invalid]="register.get('lastName').invalid && 
-                                    register.get('lastName').touched" class="form-control" placeholder="Last Name *"
+                                    register.get('lastName').touched"  placeholder="Last Name" class="form-control"
                                             value="" />
                                     </div>
                                     <div class="form-group">
@@ -127,7 +124,7 @@
                                         <input type="file" (change)="handleFileInput($event.target.files)">
                                     </div>
                                     <input type="submit" class="btnRegister disabled"
-                                    [disabled]="!register.valid" value="Register" />
+                                        [disabled]="!register.valid" value="Register" />
                                 </div>
                             </div>
                         </form>

@@ -1,6 +1,7 @@
 <div class="row">
     <nav class="navbar p-0 col-md-2 col-sm-12 d-flex flex-column bg-dark text-justify">
         <ul>
+            <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a routerLink="/dashboard" (click)="donShowNo()">Overview</a></li>
             <li style="margin-top: 20px;"><img src="https://img.icons8.com/material/24/ffffff/user-female-circle.png"/><a routerLink="my-profile" (click)="donShow()">Profile</a></li>
             <li><img src="https://img.icons8.com/material/24/ffffff/cottage.png"/><a routerLink="add-PG"  (click)="donShow()">Add your PG</a></li>
             <li><img src="https://img.icons8.com/material/24/ffffff/list.png"/> <a routerLink="pg-List"  (click)="donShow()">PG List</a></li>
@@ -9,7 +10,7 @@
         </ul>
     </nav>
       <div class="col-md-10 col-sm-12">
-          <div class="row p-5" *ngIf="showDashboard">
+          <div class="row p-5" id="dashboard" *ngIf="showDashboard">
               <p class="display-4 text-center p-1 m-1">Dashboard</p>
             <div class="card-body col-md-4 bg-light">
                 <h5 class="card-title text-center ">Number of Property Added</h5>

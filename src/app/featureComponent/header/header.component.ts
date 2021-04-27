@@ -19,11 +19,11 @@ export class HeaderComponent implements OnInit {
     if(localStorage.getItem('token'))
     {
       this.isLoggedIn=true;
+      this.pgServe.getTicketCount();
+     this.pgServe.grivence$.subscribe(res=>{
+        this.totalCount=res;
+      });
     }
-    this.pgServe.getTicket(localStorage.getItem('id')).subscribe(res=>{
-      this.totalCount=res.count;
-      console.log(res.count);
-    });
   }
     
 }

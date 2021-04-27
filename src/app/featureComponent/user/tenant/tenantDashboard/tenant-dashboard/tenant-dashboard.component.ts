@@ -13,6 +13,7 @@ export class TenantDashboardComponent implements OnInit {
   constructor(public pgserve:PgServiceService, public tenantServe:TenantServiceService) { }
   tenantCount:Number=0;
   grivenceCount:Number=0;
+  showDashboard:boolean;
   ngOnInit(): void {
 
     this.tenantServe.myBookings(localStorage.getItem('id')).subscribe(res=>{
@@ -23,14 +24,15 @@ export class TenantDashboardComponent implements OnInit {
     this.pgserve.getMyTicket(localStorage.getItem('id')).subscribe(res=>{
       this.grivenceCount=res.count;
     });
+
+    this.tenantServe.dashboard.subscribe(res=>{
+      this.showDashboard=res;
+    })
   }
-
-
-  showDashboard:boolean=true;
 
   donShow()
   {
-    this.showDashboard=false;
+    this.tenantServe.dashboard.next(false);
   }
 
 }

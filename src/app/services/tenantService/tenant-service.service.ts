@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {environment} from '../../../environments/enviroment.dev';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,8 @@ export class TenantServiceService {
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient, public router: Router) { }
+
+  public dashboard:BehaviorSubject<boolean>= new  BehaviorSubject(true);
 
   bookPg(data) {
     return this.httpClient.post<any>(`${environment.TENANT_BASE_URL}/${environment.TENANT.BOOK_PG}`, data);

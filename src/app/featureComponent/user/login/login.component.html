@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <form [formGroup]="login" (ngSubmit)="onSubmit()" class="box">
-                    <span class="text-danger" *ngIf="error">{{showError$  | async}}</span>
+                    <a class="text-primary" style="cursor: pointer;" routerLink="/home">Go to home</a>
                     <div class="form">
                         <a class="text-white" routerLink="/registration">New User? Create your Account now</a>
                         <p  class="text-white">Or</p>

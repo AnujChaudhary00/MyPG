@@ -104,3 +104,23 @@ ul li:hover
 {
   color:rgb(240, 105, 57);
 }
+
+.card1
+{
+  background-color: white;
+  box-shadow: 2px 2px 10px grey;
+}
+
+.searchTerm
+{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.carousel-control-next-icon,.carousel-control-prev-icon
+{
+  color:black;
+  background-color:black;
+}
