@@ -17,6 +17,8 @@ It's a Lease Management Portal, where one can register as a Buyer or seller and 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+For backend hit the link https://github.com/AnujChaudhary00/MyPG/tree/backend and just run npm i. Be carefull, if newbie, first download Node.js
+and mongodb then add them to path variables if not added automatically.
 
 ## Code scaffolding
 
