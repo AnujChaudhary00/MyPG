@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 It's a Lease Management Portal, where one can register as a Buyer or seller and can buy or sell property listed. Buyer can buy properties, Seller can sell his/her property by specifying details. There is two portal inside the project one for buyer and one for seller both has different dashboard. 
-# Feature
+# Features
  - Add Property
  - Delete Property
  - Update Property
@@ -11,7 +11,7 @@ It's a Lease Management Portal, where one can register as a Buyer or seller and 
  - Reset password through email
  - Phone number verification using twillio.
 
-# Technology & tools used
+# Technology & Tools used
   Angular for frontend, Express and node.js as a backend, Mongodb(mongo cloud Atlas) and mongoose as a database, Twilio for phone verification, Nodemailer for email verification, Bootstrap for design.
 
 ## Development server
