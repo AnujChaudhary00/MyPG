@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 const path = require('path');
 const multer = require('multer');
-const client = require('twilio')('ACca811e634e318c8a059b7f8da1f1cf7d', 'fffc87a1fab2d8b214c440fe9f201284');
+const client = require('twilio')('ACca811e634e318c8a059b7f8da1f1cf7d', 'a62fea4340de867a816e1adc03ffa6e2');
 var bcrypt = require('bcrypt');
 var nodemailer = require('nodemailer');
 
@@ -174,7 +174,7 @@ router.delete('/delete/:id', function (req, res, next) {
 });
 
 
-router.get('/forgotPassword/:email', function (req, res) {
+router.get('/forgotPassword/:email', function (req, res) { 
   console.log('sending email..');
 
   let transport = nodemailer.createTransport({
@@ -220,7 +220,7 @@ router.get('/forgotPassword/:email', function (req, res) {
 
 
 
-router.put('/update/:id', verifyToken, function (req, res, next) {
+router.put('/update/:id', function (req, res, next) {
 
   const userId = req.params.id;
 

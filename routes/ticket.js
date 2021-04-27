@@ -62,6 +62,18 @@ router.post('/createTicket/:id', function(req, res, next) {
 
         res.status(200).send({'count':recordCount,'result':ticket});
     })
+  });
+
+  router.get('/updateTicket/:id',function(req,res,next){
+    ticketModel.findOneAndUpdate({'ownerid':req.params.id},{'status':'resolved'},(err,ticket)=>{
+      if(err)
+      {
+        console.log(err);
+        res.status(500).send("Unable to update");
+      }
+
+      res.status(200).send("Successfully resolved");
+    })
   })
 
 

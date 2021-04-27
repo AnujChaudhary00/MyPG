@@ -8,15 +8,15 @@ var mongoose=require('mongoose');
 
 var jwt= require('jsonwebtoken');
 
-// mongoose.connect('mongodb://127.0.0.1:27017/cityMate',{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
-// .then(()=>console.log("database is connected"))
-// .catch((error)=>console.log(error));
-
-
-mongoose.connect('mongodb+srv://lms:RyvUGRluJJs0ywAn@lms.z06ry.mongodb.net/LMS?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
+mongoose.connect('mongodb://127.0.0.1:27017/cityMate',{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
 .then(()=>console.log("database is connected"))
- .catch((error)=>console.log(error));
+.catch((error)=>console.log(error));
 
+
+// mongoose.connect('mongodb+srv://lms:RyvUGRluJJs0ywAn@lms.z06ry.mongodb.net/LMS?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
+// .then(()=>console.log("database is connected"))
+//  .catch((error)=>console.log(error));
+ 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

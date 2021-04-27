@@ -151,6 +151,21 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
     });
   });
 
+  router.get('/searchLocation/:loc',function(req,res,next){
+
+    const location=req.params.loc;
+    pgModel.find({'city':location},function(err,pgResponse){
+      if(err)
+    {
+      res.send({status:500,message:"internal server"});
+    }
+    else{
+      const recordCount=pgResponse.length
+      res.send({status:200,'count':recordCount,result:pgResponse}); 
+    }
+    }) 
+    
+  })
 
   router.get('/searchPg/:id',function(req,res,next){
     const ownerid=req.params.id;
@@ -161,7 +176,7 @@ router.post('/addPg',upload.array("uploads[]", 12),function(req,res,next){
         console.log(err);
         res.send({status:500,message:"Cannot find Pg"})
       }else{
-        console.log(pgResponse);
+
         const recordCount=pgResponse.length
         res.send({status:200,'count':recordCount,result:pgResponse}); 
       }
