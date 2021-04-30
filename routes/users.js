@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 const path = require('path');
 const multer = require('multer');
-const client = require('twilio')('ACca811e634e318c8a059b7f8da1f1cf7d', 'a62fea4340de867a816e1adc03ffa6e2');
+const client = require('twilio')('twilioSID', 'twilioToken');
 var bcrypt = require('bcrypt');
 var nodemailer = require('nodemailer');
 
@@ -63,7 +63,7 @@ router.get('/verify', function (req, res, next) {
   if (req.query.phoneno) {
     client
       .verify
-      .services('VA6e441611786ec641735df7c7fd818f22')
+      .services('TwilioServiceId')
       .verifications
       .create({
         to: `+91${req.query.phoneno}`,
@@ -85,7 +85,7 @@ router.get('/verify', function (req, res, next) {
 router.get('/verifycode', (req, res) => {
   client
     .verify
-    .services('VA6e441611786ec641735df7c7fd818f22')
+    .services('TwilioServiceId')
     .verificationChecks
     .create({
       to: `+91${req.query.phoneno}`,
@@ -181,8 +181,8 @@ router.get('/forgotPassword/:email', function (req, res) {
     port: 465,
     host: "smtp.gmail.com",
     auth: {
-      user: 'nikkichuadhary896@gmail.com',
-      pass: 'Chaudhary#1'
+      user: 'Your email',
+      pass: 'Email-password'
     }
   });
 
@@ -197,7 +197,7 @@ router.get('/forgotPassword/:email', function (req, res) {
       console.log(user);
       console.log(user[0].email);
       const message = {
-        from: 'nikkichuadhary896@gmail.com',
+        from: 'sender email',
         to: user[0].email,
         subject: 'Forgot Password',
         text: `Hi ${user[0].firstname}, a request of forgot password has been recieved from your account, here is your password ${user[0].password}, please change your password from profile setting option in dashboard.` // Plain text body
